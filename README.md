@@ -33,21 +33,21 @@ Responsible for handling system notifications (Registration Confirmations, Passw
 
 ### Kafka Consumers
 
-| Topic | Group ID | Payload Event | Action |
-| :--- | :--- | :--- | :--- |
-| `user-registered` | `notification-group` | `RegistrationEvent` | Sends a confirmation code email. |
+| Topic                 | Group ID             | Payload Event        | Action                             |
+|:----------------------|:---------------------|:---------------------|:-----------------------------------|
+| `user-registered`     | `notification-group` | `RegistrationEvent`  | Sends a confirmation code email.   |
 | `user-password-reset` | `notification-group` | `PasswordResetEvent` | Sends a password reset code email. |
 
 ---
 
 ## :hammer_and_wrench: Tech Details
 
-| Component | Implementation |
-| :--- | :--- |
-| **Messaging** | Spring Kafka (Consumer) |
-| **Email** | JavaMailSender (Spring Boot Starter Mail) |
-| **Serialization** | Jackson (JSON) |
-| **Monitoring** | Spring Boot Actuator, Logstash Logback Encoder |
+| Component         | Implementation                                 |
+|:------------------|:-----------------------------------------------|
+| **Messaging**     | Spring Kafka (Consumer)                        |
+| **Email**         | JavaMailSender (Spring Boot Starter Mail)      |
+| **Serialization** | Jackson (JSON)                                 |
+| **Monitoring**    | Spring Boot Actuator, Logstash Logback Encoder |
 
 ---
 
@@ -55,16 +55,16 @@ Responsible for handling system notifications (Registration Confirmations, Passw
 
 Required variables for `local` or `k8s` deployment:
 
-| Variable | Purpose |
-| :--- | :--- |
-| **Mail Server Configuration** | |
-| `EMAIL_HOST` | SMTP server host (e.g., `smtp.gmail.com`). |
-| `EMAIL_PORT` | SMTP server port (e.g., `587`). |
-| `EMAIL_USERNAME` | SMTP username / sender email address. |
-| `EMAIL_PASSWORD` | SMTP password or App Password. |
-| **Infrastructure** | |
-| `KAFKA_URL` | Kafka bootstrap servers address. |
-| `MACRO_TRACKER_URL` | Base URL of the application (used for generating links/Swagger config). |
+| Variable                      | Purpose                                                                 |
+|:------------------------------|:------------------------------------------------------------------------|
+| **Mail Server Configuration** |                                                                         |
+| `EMAIL_HOST`                  | SMTP server host (e.g., `smtp.gmail.com`).                              |
+| `EMAIL_PORT`                  | SMTP server port (e.g., `587`).                                         |
+| `EMAIL_USERNAME`              | SMTP username / sender email address.                                   |
+| `EMAIL_PASSWORD`              | SMTP password or App Password.                                          |
+| **Infrastructure**            |                                                                         |
+| `KAFKA_URL`                   | Kafka bootstrap servers address.                                        |
+| `MACRO_TRACKER_URL`           | Base URL of the application (used for generating links/Swagger config). |
 
 ---
 
